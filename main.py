@@ -55,7 +55,7 @@ def main():
             for bullet in bullet_group:
                 if bullet.check_collision(asteroid):
                     bullet.kill()
-                    asteroid.kill()
+                    asteroid.split()
                     break
 
         # Draw all sprites
