@@ -1,9 +1,11 @@
 import pygame
 from constants import *
+from player import Player
 
 
 def main():
     pygame.init()
+    player = Player(SCREEN_WIDTH // 2, SCREEN_HEIGHT // 2)
     screen = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
     pygame.display.set_caption("Asteroids")
     clock = pygame.time.Clock()
@@ -16,7 +18,7 @@ def main():
                 return
 
         screen.fill((0, 0, 0))
-
+        player.draw(screen)
         pygame.display.flip()
         clock.tick(60)
         dt = clock.get_time() / 1000
