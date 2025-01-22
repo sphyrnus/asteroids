@@ -3,6 +3,7 @@ from constants import *
 from player import Player
 from asteroid import Asteroid
 from asteroidfield import AsteroidField
+from bullet import Bullet
 
 
 def main():
@@ -27,6 +28,9 @@ def main():
     # Create asteroid field and add it to the groups
     AsteroidField.containers = update_group
     AsteroidField()
+
+    # Bullet group
+    Bullet.containers = (update_group, draw_group)
 
     while True:
         for event in pygame.event.get():
