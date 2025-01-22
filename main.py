@@ -17,6 +17,7 @@ def main():
     update_group = pygame.sprite.Group()
     draw_group = pygame.sprite.Group()
     asteroid_group = pygame.sprite.Group()
+    bullet_group = pygame.sprite.Group()
 
     # Create player and add it to the groups
     Player.containers = (update_group, draw_group)
@@ -30,7 +31,7 @@ def main():
     AsteroidField()
 
     # Bullet group
-    Bullet.containers = (update_group, draw_group)
+    Bullet.containers = (update_group, draw_group, bullet_group)
 
     while True:
         for event in pygame.event.get():
@@ -51,6 +52,12 @@ def main():
                 player.kill()
                 pygame.quit()
                 return
+            for bullet in bullet_group:
+                if bullet.check_collision(asteroid):
+                    bullet.kill()
+                    asteroid.kill()
+                    break
+
         # Draw all sprites
         for group in draw_group:
             group.draw(screen)
