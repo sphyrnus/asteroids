@@ -39,6 +39,14 @@ def main():
         # Update all sprites
         for group in update_group:
             group.update(dt)
+
+        # Check for collisions
+        for asteroid in asteroid_group:
+            if player.check_collision(asteroid):
+                print("Game over!")
+                player.kill()
+                pygame.quit()
+                return
         # Draw all sprites
         for group in draw_group:
             group.draw(screen)
